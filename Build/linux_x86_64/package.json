@@ -1,0 +1,7 @@
+{
+  "name":"toolchain-fujprog",
+  "description":"FPGA JTAG programmer for ULX2/3S boards",
+  "url":"https://github.com/FPGAwars/toolchain-fujprog/releases",
+  "version": "2020.10.06",
+  "system": [ "linux_x86_64" ]
+}
