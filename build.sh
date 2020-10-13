@@ -101,17 +101,18 @@ echo "Download from: "$SRC_URL
 cd $PACKAGE_DIR/$NAME/bin
 
 # --- Download the executable file, if it does not exist yet
-if [[ -f $SRC_NAME ]]; then
+if [[ -f fujprog ]]; then
   echo "FILE Already exist"
 else
   wget $SRC_URL/$SRC_NAME
+
+  # -- Rename the file to fujprog
+  mv $SRC_NAME fujprog$EXE
+
+  # -- Give the executable permision to fujprog
+  chmod a+x fujprog$EXE
 fi
 
-# -- Rename the file to fujprog
-cp $SRC_NAME fujprog$EXE
-
-# -- Give the executable permision to fujprog
-chmod a+x fujprog$EXE
 
 # -- Create package script
 
