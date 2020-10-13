@@ -11,13 +11,13 @@ WORK_DIR=$PWD
 PACKAGES_DIR=$WORK_DIR/_packages
 
 # -- Check ARCH
-if [[ $# > 1 ]]; then
+if [[ $# -gt 1 ]]; then
   echo ""
   echo "Error: too many arguments"
   exit 1
 fi
 
-if [[ $# < 1 ]]; then
+if [[ $# -gt 1 ]]; then
   echo ""
   echo "Usage: bash clean.sh TARGET"
   echo ""
@@ -34,8 +34,8 @@ fi
 echo ""
 echo ">>> ARCHITECTURE \"$ARCH\""
 
-printf "Are you sure? [y/N]:${NC} "
-read RESP
+printf "Are you sure? [y/N]:" 
+read -r RESP
 case "$RESP" in
     [yY][eE][sS]|[yY])
 
@@ -43,10 +43,10 @@ case "$RESP" in
       PACKAGE_DIR=$PACKAGES_DIR/build_$ARCH
 
       # -- Remove the package dir
-      rm -r -f $PACKAGE_DIR
+      rm -r -f "$PACKAGE_DIR"
 
       # -- Remove the package from the releases folder
-      rm -f releases/toolchain-*-$ARCH*
+      rm -f releases/toolchain-*-"$ARCH"*
 
       echo ""
       echo ">> CLEAN"
