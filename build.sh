@@ -108,6 +108,34 @@ else
 fi
 
 
+# -- Create package script
+
+# -- Copy templates/package-template.json
+cp -r $WORK_DIR/build-data/templates/package-template.json $PACKAGE_DIR/$NAME/package.json
+
+if [ $ARCH == "linux_x86_64" ]; then
+  sed -i "s/%VERSION%/\"$VERSION\"/;" $PACKAGE_DIR/$NAME/package.json
+  sed -i "s/%SYSTEM%/\"linux_x86_64\"/;" $PACKAGE_DIR/$NAME/package.json
+fi
+
+if [ $ARCH == "windows_amd64" ]; then
+  sed -i "s/%VERSION%/\"$VERSION\"/;" $PACKAGE_DIR/$NAME/package.json
+  sed -i "s/%SYSTEM%/\"windows_amd64\"/;" $PACKAGE_DIR/$NAME/package.json
+fi
+
+## --Create a tar.gz package
+
+cd $PACKAGE_DIR/$NAME
+
+tar -czvf ../$NAME-$ARCH-$VERSION.tar.gz *
+
+# -- Create the releases folder
+mkdir -p $WORK_DIR/releases
+
+## -- Copy the package to the releases folder
+cd $PACKAGE_DIR
+cp $NAME-$ARCH-$VERSION.tar.gz $WORK_DIR/releases
+
 # --------- DEBUG ------------------------------------
 #  . $WORK_DIR/scripts/install_dependencies.sh
 

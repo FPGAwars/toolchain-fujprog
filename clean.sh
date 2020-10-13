@@ -45,6 +45,9 @@ case "$RESP" in
       # -- Remove the package dir
       rm -r -f $PACKAGE_DIR
 
+      # -- Remove the package from the releases folder
+      rm -f releases/toolchain-*-$ARCH*
+
       echo ""
       echo ">> CLEAN"
       ;;

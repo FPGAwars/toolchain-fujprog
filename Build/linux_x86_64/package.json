@@ -1,7 +1,0 @@
-{
-  "name":"toolchain-fujprog",
-  "description":"Programmer for ULX2/3S boards",
-  "url":"https://github.com/FPGAwars/toolchain-fujprog/releases",
-  "version": %VERSION%,
-  "system": [ %SYSTEM%  ]
-}
