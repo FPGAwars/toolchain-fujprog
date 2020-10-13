@@ -56,3 +56,10 @@ apio install fujprog
 apio install -l
 ```
 
+## Credits
+
+* The [fujprog](https://github.com/kost/fujprog) project has been developed by: Marko Zec, EMARD, gojimmpypi and Kost
+
+* The building scripts are based on the [Tools-systems](https://github.com/FPGAwars/tools-system) by  
+  * [Jesús Arroyo Torrens](https://github.com/Jesus89)
+  * [Juan González-Gómez (Obijuan)](https://github.com/Obijuan)
