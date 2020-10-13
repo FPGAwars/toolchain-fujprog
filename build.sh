@@ -101,7 +101,7 @@ echo "Download from: "$SRC_URL
 cd $PACKAGE_DIR/$NAME/bin
 
 # --- Download the executable file, if it does not exist yet
-if [[ -f fujprog ]]; then
+if [[ -f fujprog$EXE ]]; then
   echo "FILE Already exist"
 else
   wget $SRC_URL/$SRC_NAME
