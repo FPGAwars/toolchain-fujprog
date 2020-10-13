@@ -107,6 +107,11 @@ else
   wget $SRC_URL/$SRC_NAME
 fi
 
+# -- Rename the file to fujprog
+cp $SRC_NAME fujprog$EXE
+
+# -- Give the executable permision to fujprog
+chmod a+x fujprog$EXE
 
 # -- Create package script
 
