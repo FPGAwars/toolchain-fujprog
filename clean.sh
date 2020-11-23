@@ -2,7 +2,7 @@
 
 # -- Target architectures
 ARCH=$1
-TARGET_ARCHS="linux_x86_64 windows_amd64 darwin"
+TARGET_ARCHS="linux_x86_64 windows_amd64 windows_x86 darwin"
 
 # -- Store current dir
 WORK_DIR=$PWD
@@ -28,6 +28,8 @@ fi
 if [[ $ARCH =~ [[:space:]] || ! $TARGET_ARCHS =~ (^|[[:space:]])$ARCH([[:space:]]|$) ]]; then
   echo ""
   echo ">>> WRONG ARCHITECTURE \"$ARCH\""
+  echo "Targets: $TARGET_ARCHS"
+  echo ""
   exit 1
 fi
 
