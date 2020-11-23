@@ -20,7 +20,7 @@ SRC_VER=v$SRC_MAYOR.$SRC_MINOR
 
 # -- Target architectures
 ARCH=$1
-TARGET_ARCHS="linux_x86_64 windows_amd64 darwin"
+TARGET_ARCHS="linux_x86_64 windows_amd64 windows_x86 darwin"
 
 # -- Tools name
 NAME=toolchain-fujprog
@@ -65,6 +65,8 @@ fi
 if [[ $ARCH =~ [[:space:]] || ! $TARGET_ARCHS =~ (^|[[:space:]])$ARCH([[:space:]]|$) ]]; then
   echo ""
   echo ">>> WRONG ARCHITECTURE \"$ARCH\""
+  echo "Targets: $TARGET_ARCHS"
+  echo ""
   exit 1
 fi
 
@@ -86,6 +88,14 @@ if [ "$ARCH" == "windows_amd64" ]; then
   SRC_NAME=$SRC_NAME$SRC_ARCH$EXE
   echo "Source filename: "$SRC_NAME
 fi
+
+if [ "$ARCH" == "windows_x86" ]; then
+  SRC_ARCH="win32"
+  EXE=".exe"
+  SRC_NAME=$SRC_NAME$SRC_ARCH$EXE
+  echo "Source filename: "$SRC_NAME
+fi
+
 
 if [ "$ARCH" == "linux_x86_64" ]; then
   SRC_ARCH="linux-x64"
@@ -129,6 +139,11 @@ if [ "$ARCH" == "windows_amd64" ]; then
   sed -i "s/%SYSTEM%/\"windows_amd64\"/;" "$PACKAGE_DIR"/"$NAME"/package.json
 fi
 
+if [ "$ARCH" == "windows_x86" ]; then
+  sed -i "s/%VERSION%/\"$VERSION\"/;" "$PACKAGE_DIR"/"$NAME"/package.json
+  sed -i "s/%SYSTEM%/\"windows_x86\"/;" "$PACKAGE_DIR"/"$NAME"/package.json
+fi
+
 ## --Create a tar.gz package
 
 cd "$PACKAGE_DIR/$NAME" || exit
@@ -141,14 +156,5 @@ mkdir -p "$WORK_DIR/releases"
 ## -- Copy the package to the releases folder
 cd "$PACKAGE_DIR" || exit
 cp "$NAME"-"$ARCH"-"$VERSION".tar.gz "$WORK_DIR"/releases
-
-# --------- DEBUG ------------------------------------
-#  . $WORK_DIR/scripts/install_dependencies.sh
-
-# --------- Compile lsusb ------------------------------------------
-# . $WORK_DIR/scripts/compile_lsusb.sh
-
-# --------- Create the package -------------------------------------
-# . $WORK_DIR/scripts/create_package.sh
 
 echo ""
