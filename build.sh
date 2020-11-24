@@ -104,6 +104,13 @@ if [ "$ARCH" == "linux_x86_64" ]; then
   echo "Source filename: "$SRC_NAME
 fi
 
+if [ "$ARCH" == "darwin" ]; then
+  SRC_ARCH="mac-x64"
+  EXE=""
+  SRC_NAME=$SRC_NAME$SRC_ARCH$EXE
+  echo "Source filename: "$SRC_NAME
+fi
+
 echo "Download from: "$SRC_URL
 
 
