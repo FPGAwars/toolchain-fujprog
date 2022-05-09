@@ -1,3 +1,6 @@
+# Archived!
+* **2022-May-9**: This repo has been archived, since the fujprog is no longer used as an isolated Apio package. Use the [Tools-oss-cad-suite](https://github.com/FPGAwars/tools-oss-cad-suite) package instead
+
 # toolchain-fujprog
 Apio package that contains the [fujprog](https://github.com/kost/fujprog) FPGA JTAG programmer for [ULX2/3S boards](https://github.com/ulx3s/ulx3s.github.io)
 
